@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D9051A072208DFE200B1EEFC /* DayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051A062208DFE200B1EEFC /* DayData.swift */; };
 		D94743DE22079A33004F3DEA /* SensitiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94743DD22079A33004F3DEA /* SensitiveData.swift */; };
 		D99AADDE22073DC100A58B37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99AADDD22073DC100A58B37 /* AppDelegate.swift */; };
 		D99AADE022073DC100A58B37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99AADDF22073DC100A58B37 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 		0A218A0635F56C05A8446964 /* Pods_Zephyr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zephyr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E2F1170E1F2F705465259CA /* Pods-Zephyr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zephyr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zephyr/Pods-Zephyr.release.xcconfig"; sourceTree = "<group>"; };
 		BDD357B25220EB928375881A /* Pods-Zephyr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zephyr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zephyr/Pods-Zephyr.debug.xcconfig"; sourceTree = "<group>"; };
+		D9051A062208DFE200B1EEFC /* DayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayData.swift; sourceTree = "<group>"; };
 		D94743DD22079A33004F3DEA /* SensitiveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitiveData.swift; sourceTree = "<group>"; };
 		D99AADDA22073DC100A58B37 /* Zephyr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zephyr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D99AADDD22073DC100A58B37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 		D99AADDC22073DC100A58B37 /* Zephyr */ = {
 			isa = PBXGroup;
 			children = (
+				D9051A062208DFE200B1EEFC /* DayData.swift */,
 				D99AADDD22073DC100A58B37 /* AppDelegate.swift */,
 				D99AADDF22073DC100A58B37 /* ViewController.swift */,
 				D99AADE122073DC100A58B37 /* Main.storyboard */,
@@ -205,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9051A072208DFE200B1EEFC /* DayData.swift in Sources */,
 				D94743DE22079A33004F3DEA /* SensitiveData.swift in Sources */,
 				D99AADE022073DC100A58B37 /* ViewController.swift in Sources */,
 				D99AADDE22073DC100A58B37 /* AppDelegate.swift in Sources */,
