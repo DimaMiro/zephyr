@@ -16,10 +16,12 @@ class MainInfoCard: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 64)
         label.textColor = .white
         label.textAlignment = .center
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
     
     var statusLabel: UILabel = {
+        
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 21)
@@ -54,24 +56,28 @@ class MainInfoCard: UIView {
         self.layer.cornerRadius = 20
         self.layer.masksToBounds = true
         
+        self.widthAnchor.constraint(equalToConstant: 390).isActive = true
+
+        
         addSubview(pm25Label)
         pm25Label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25).isActive = true
         pm25Label.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
         addSubview(statusLabel)
         statusLabel.leadingAnchor.constraint(equalTo: pm25Label.trailingAnchor, constant: 25).isActive = true
-        statusLabel.topAnchor.constraint(equalTo: pm25Label.topAnchor).isActive = true
-        statusLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25).isActive = true
-        
+        statusLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 25).isActive = true
+        statusLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
+
         addSubview(updatedTimeLabel)
         updatedTimeLabel.leadingAnchor.constraint(equalTo: statusLabel.leadingAnchor).isActive = true
         updatedTimeLabel.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 2).isActive = true
-        updatedTimeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25).isActive = true
-        
+        updatedTimeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
+
         addSubview(temperatureLabel)
         temperatureLabel.leadingAnchor.constraint(equalTo: statusLabel.leadingAnchor).isActive = true
         temperatureLabel.topAnchor.constraint(equalTo: updatedTimeLabel.bottomAnchor, constant: 2).isActive = true
-        temperatureLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25).isActive = true
+        temperatureLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
+        temperatureLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -25).isActive = true
         
     }
     
@@ -86,7 +92,7 @@ class MainInfoCard: UIView {
                 self.statusLabel.text = "Moderate"
             case 101...150:
                 self.backgroundColor = UIColor.CustomColor.orange
-                self.statusLabel.text = "Unhealthy for Sensitive Groups"
+                self.statusLabel.text = "Unhealthy"
             case 151...200:
                 self.backgroundColor = UIColor.CustomColor.red
                 self.statusLabel.text = "Unhealthy"
@@ -105,6 +111,14 @@ class MainInfoCard: UIView {
             self.statusLabel.text = "N/A"
         }
         
+    }
+    
+    func formatDate(_ date: String) -> String {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, HH:mm"
+        let currentDate = formatter.string(from: date)
+        return currentDate
     }
     
     required init?(coder aDecoder: NSCoder) {

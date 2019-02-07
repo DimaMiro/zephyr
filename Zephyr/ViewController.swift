@@ -33,9 +33,10 @@ class ViewController: UIViewController {
     fileprivate func setupCardView(_ guide: UILayoutGuide) {
         view.addSubview(card)
         card.topAnchor.constraint(equalTo: guide.topAnchor, constant: 16).isActive = true
-        card.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 16).isActive = true
-        card.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -16).isActive = true
-        card.heightAnchor.constraint(equalToConstant: 120).isActive = true
+//        card.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 16).isActive = true
+//        card.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -16).isActive = true
+//        card.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        card.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
         card.isHidden = true
     }
@@ -47,7 +48,7 @@ class ViewController: UIViewController {
             card.checkForCardColor(pm25value: pm25Value)
         } else { print("pm25Value is nil") }
         if let udatedTimeValue = self.dayData?.time {
-            card.updatedTimeLabel.text = "Updated on \(udatedTimeValue)"
+            card.updatedTimeLabel.text = "Updated on \(card.formatDate(udatedTimeValue))"
         } else { print("udatedTimeValue is nil") }
         if let temperatureValue = self.dayData?.temp {
             card.temperatureLabel.text = "Temperature: \(temperatureValue)°C"
