@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		D9051A072208DFE200B1EEFC /* DayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051A062208DFE200B1EEFC /* DayData.swift */; };
+		D91BDACD220C746000C7E415 /* UIColor+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BDACC220C746000C7E415 /* UIColor+Extention.swift */; };
+		D9217CA2220A3343000578AF /* MainInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9217CA1220A3343000578AF /* MainInfoCard.swift */; };
 		D94743DE22079A33004F3DEA /* SensitiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94743DD22079A33004F3DEA /* SensitiveData.swift */; };
 		D99AADDE22073DC100A58B37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99AADDD22073DC100A58B37 /* AppDelegate.swift */; };
 		D99AADE022073DC100A58B37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99AADDF22073DC100A58B37 /* ViewController.swift */; };
-		D99AADE322073DC100A58B37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D99AADE122073DC100A58B37 /* Main.storyboard */; };
 		D99AADE522073DC200A58B37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D99AADE422073DC200A58B37 /* Assets.xcassets */; };
 		D99AADE822073DC200A58B37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D99AADE622073DC200A58B37 /* LaunchScreen.storyboard */; };
 		E39DACD3C52C734524717AD6 /* Pods_Zephyr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A218A0635F56C05A8446964 /* Pods_Zephyr.framework */; };
@@ -22,11 +23,12 @@
 		3E2F1170E1F2F705465259CA /* Pods-Zephyr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zephyr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zephyr/Pods-Zephyr.release.xcconfig"; sourceTree = "<group>"; };
 		BDD357B25220EB928375881A /* Pods-Zephyr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zephyr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zephyr/Pods-Zephyr.debug.xcconfig"; sourceTree = "<group>"; };
 		D9051A062208DFE200B1EEFC /* DayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayData.swift; sourceTree = "<group>"; };
+		D91BDACC220C746000C7E415 /* UIColor+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extention.swift"; sourceTree = "<group>"; };
+		D9217CA1220A3343000578AF /* MainInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoCard.swift; sourceTree = "<group>"; };
 		D94743DD22079A33004F3DEA /* SensitiveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitiveData.swift; sourceTree = "<group>"; };
 		D99AADDA22073DC100A58B37 /* Zephyr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zephyr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D99AADDD22073DC100A58B37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D99AADDF22073DC100A58B37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D99AADE222073DC100A58B37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D99AADE422073DC200A58B37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D99AADE722073DC200A58B37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D99AADE922073DC200A58B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +63,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D904F10E220C203A00A75E9B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D9051A062208DFE200B1EEFC /* DayData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D904F10F220C204700A75E9B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D99AADE922073DC200A58B37 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D904F110220C20C600A75E9B /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				D99AADE622073DC200A58B37 /* LaunchScreen.storyboard */,
+				D9217CA1220A3343000578AF /* MainInfoCard.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		D904F111220C20E300A75E9B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D94743DD22079A33004F3DEA /* SensitiveData.swift */,
+				D91BDACC220C746000C7E415 /* UIColor+Extention.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		D99AADD122073DC100A58B37 = {
 			isa = PBXGroup;
 			children = (
@@ -82,14 +118,13 @@
 		D99AADDC22073DC100A58B37 /* Zephyr */ = {
 			isa = PBXGroup;
 			children = (
-				D9051A062208DFE200B1EEFC /* DayData.swift */,
 				D99AADDD22073DC100A58B37 /* AppDelegate.swift */,
 				D99AADDF22073DC100A58B37 /* ViewController.swift */,
-				D99AADE122073DC100A58B37 /* Main.storyboard */,
 				D99AADE422073DC200A58B37 /* Assets.xcassets */,
-				D99AADE622073DC200A58B37 /* LaunchScreen.storyboard */,
-				D99AADE922073DC200A58B37 /* Info.plist */,
-				D94743DD22079A33004F3DEA /* SensitiveData.swift */,
+				D904F111220C20E300A75E9B /* Helpers */,
+				D904F10E220C203A00A75E9B /* Model */,
+				D904F110220C20C600A75E9B /* Modules */,
+				D904F10F220C204700A75E9B /* Supporting Files */,
 			);
 			path = Zephyr;
 			sourceTree = "<group>";
@@ -156,7 +191,6 @@
 			files = (
 				D99AADE822073DC200A58B37 /* LaunchScreen.storyboard in Resources */,
 				D99AADE522073DC200A58B37 /* Assets.xcassets in Resources */,
-				D99AADE322073DC100A58B37 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,24 +242,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D91BDACD220C746000C7E415 /* UIColor+Extention.swift in Sources */,
 				D9051A072208DFE200B1EEFC /* DayData.swift in Sources */,
 				D94743DE22079A33004F3DEA /* SensitiveData.swift in Sources */,
 				D99AADE022073DC100A58B37 /* ViewController.swift in Sources */,
 				D99AADDE22073DC100A58B37 /* AppDelegate.swift in Sources */,
+				D9217CA2220A3343000578AF /* MainInfoCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D99AADE122073DC100A58B37 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D99AADE222073DC100A58B37 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D99AADE622073DC200A58B37 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -360,7 +388,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZLLL35N9FP;
-				INFOPLIST_FILE = Zephyr/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Zephyr/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -379,7 +407,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZLLL35N9FP;
-				INFOPLIST_FILE = Zephyr/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Zephyr/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

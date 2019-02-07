@@ -9,12 +9,14 @@
 import Foundation
 
 struct DayData {
+    
     var city: String?
     var time: String?
-    var pm25: Double?
-    var pm10: Double?
+    var pm25: Int?
+    var pm10: Int?
     var o3: Double?
     var no2: Double?
     var so2: Double?
     var co: Double?
+    var temp: Int?
 }
