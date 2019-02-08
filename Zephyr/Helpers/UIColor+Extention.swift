@@ -16,5 +16,8 @@ extension UIColor {
         static let red = UIColor(red: 249/255, green: 86/255, blue: 75/255, alpha: 1)
         static let purple = UIColor(red: 109/255, green: 55/255, blue: 143/255, alpha: 1)
         static let brown = UIColor(red: 143/255, green: 61/255, blue: 55/255, alpha: 1)
+        
+        static let backgroundGray = UIColor(red: 247/255, green: 249/255, blue: 250/255, alpha: 1)
+        static let outlineGray = UIColor(red: 215/255, green: 224/255, blue: 230/255, alpha: 1)
     }
 }

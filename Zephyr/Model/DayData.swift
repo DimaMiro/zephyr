@@ -18,5 +18,6 @@ struct DayData {
     var no2: Double?
     var so2: Double?
     var co: Double?
-    var temp: Int?
+    var temp: Double?
+    
 }

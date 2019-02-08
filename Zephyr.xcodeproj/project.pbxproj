@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		D9051A072208DFE200B1EEFC /* DayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051A062208DFE200B1EEFC /* DayData.swift */; };
 		D91BDACD220C746000C7E415 /* UIColor+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BDACC220C746000C7E415 /* UIColor+Extention.swift */; };
+		D91BDACF220CD13500C7E415 /* InfoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BDACE220CD13500C7E415 /* InfoTableView.swift */; };
 		D9217CA2220A3343000578AF /* MainInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9217CA1220A3343000578AF /* MainInfoCard.swift */; };
+		D9275957220E2E7D009C8DB5 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9275956220E2E7D009C8DB5 /* InfoTableViewCell.swift */; };
 		D94743DE22079A33004F3DEA /* SensitiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94743DD22079A33004F3DEA /* SensitiveData.swift */; };
 		D99AADDE22073DC100A58B37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99AADDD22073DC100A58B37 /* AppDelegate.swift */; };
 		D99AADE022073DC100A58B37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99AADDF22073DC100A58B37 /* ViewController.swift */; };
@@ -24,7 +26,9 @@
 		BDD357B25220EB928375881A /* Pods-Zephyr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zephyr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zephyr/Pods-Zephyr.debug.xcconfig"; sourceTree = "<group>"; };
 		D9051A062208DFE200B1EEFC /* DayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayData.swift; sourceTree = "<group>"; };
 		D91BDACC220C746000C7E415 /* UIColor+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extention.swift"; sourceTree = "<group>"; };
+		D91BDACE220CD13500C7E415 /* InfoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableView.swift; sourceTree = "<group>"; };
 		D9217CA1220A3343000578AF /* MainInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoCard.swift; sourceTree = "<group>"; };
+		D9275956220E2E7D009C8DB5 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		D94743DD22079A33004F3DEA /* SensitiveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitiveData.swift; sourceTree = "<group>"; };
 		D99AADDA22073DC100A58B37 /* Zephyr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zephyr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D99AADDD22073DC100A58B37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 			children = (
 				D99AADE622073DC200A58B37 /* LaunchScreen.storyboard */,
 				D9217CA1220A3343000578AF /* MainInfoCard.swift */,
+				D91BDACE220CD13500C7E415 /* InfoTableView.swift */,
+				D9275956220E2E7D009C8DB5 /* InfoTableViewCell.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -243,7 +249,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D91BDACD220C746000C7E415 /* UIColor+Extention.swift in Sources */,
+				D9275957220E2E7D009C8DB5 /* InfoTableViewCell.swift in Sources */,
 				D9051A072208DFE200B1EEFC /* DayData.swift in Sources */,
+				D91BDACF220CD13500C7E415 /* InfoTableView.swift in Sources */,
 				D94743DE22079A33004F3DEA /* SensitiveData.swift in Sources */,
 				D99AADE022073DC100A58B37 /* ViewController.swift in Sources */,
 				D99AADDE22073DC100A58B37 /* AppDelegate.swift in Sources */,
