@@ -81,6 +81,20 @@ class MainInfoCard: UIView {
         
     }
     
+    func updateCardData(_ data: DayData?) {
+        self.isHidden = false
+        if let pm25Value = data?.pm25 {
+            pm25Label.text = String(pm25Value)
+            checkForCardColor(pm25value: pm25Value)
+        } else { print("pm25Value is nil") }
+        if let udatedTimeValue = data?.time {
+            updatedTimeLabel.text = "Updated on \(self.formatDate(udatedTimeValue))"
+        } else { print("udatedTimeValue is nil") }
+        if let temperatureValue = data?.temp {
+            temperatureLabel.text = "Temperature: \(temperatureValue)°C"
+        } else { print("temperatureValue is nil") }
+    }
+    
     func checkForCardColor(pm25value: Int?) {
         if let value = pm25value {
             switch value {

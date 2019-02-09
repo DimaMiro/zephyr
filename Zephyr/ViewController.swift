@@ -13,13 +13,14 @@ import SwiftyJSON
 class ViewController: UIViewController {
     
     fileprivate let token = SensitiveData.token
-    fileprivate var city = ""
-    fileprivate lazy var url = "https://api.waqi.info/feed/\(city)/?token=\(token)"
+    fileprivate var city: String?
+    fileprivate lazy var url = "https://api.waqi.info/feed/\(city ?? "here")/?token=\(token)"
     
     fileprivate var dayData: DayData?
     
     var card = MainInfoCard()
     var infoTableView = InfoTableView()
+    
     lazy var indicator : UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +45,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        city = "here"
         view.addSubview(scrollView)
         scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -78,22 +78,6 @@ class ViewController: UIViewController {
         card.isHidden = true
     }
     
-    
-    
-    fileprivate func updateCardData(_ data: DayData) {
-        card.isHidden = false
-        if let pm25Value = self.dayData?.pm25 {
-            card.pm25Label.text = String(pm25Value)
-            card.checkForCardColor(pm25value: pm25Value)
-        } else { print("pm25Value is nil") }
-        if let udatedTimeValue = self.dayData?.time {
-            card.updatedTimeLabel.text = "Updated on \(card.formatDate(udatedTimeValue))"
-        } else { print("udatedTimeValue is nil") }
-        if let temperatureValue = self.dayData?.temp {
-            card.temperatureLabel.text = "Temperature: \(temperatureValue)°C"
-        } else { print("temperatureValue is nil") }
-    }
-    
     fileprivate func fetchData(withUrl url: String) {
         Alamofire.request(url, method: .get).responseJSON { (response) in
             if response.result.isSuccess {
@@ -105,7 +89,8 @@ class ViewController: UIViewController {
                     print(jsonData)
                     DispatchQueue.main.async {
                         self.indicator.stopAnimating()
-                        self.updateCardData(self.dayData!)
+                        self.card.updateCardData(self.dayData)
+                        self.infoTableView.updateTableViewData(self.dayData)
                         if let firstWordInLocation = self.dayData!.city!.components(separatedBy: ",").first {
                             self.navigationItem.title = firstWordInLocation
                         }
