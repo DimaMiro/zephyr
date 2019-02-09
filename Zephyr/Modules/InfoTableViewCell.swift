@@ -36,6 +36,7 @@ class InfoTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        self.isUserInteractionEnabled = false
         addSubview(propertyNameLabel)
         propertyNameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         propertyNameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 26).isActive = true

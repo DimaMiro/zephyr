@@ -29,19 +29,6 @@ class InfoTableView: UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.register(InfoTableViewCell.self, forCellReuseIdentifier: cellID)
     }
     
-    func updateTableViewData(_ data: DayData?) {
-        guard let data = data else { return }
-        dataArray = [(name: "PM2.5", value: data.pm25),
-                    (name: "PM10", value: data.pm10),
-                    (name: "O3", value: data.o3),
-                    (name: "NO2", value: data.no2),
-                    (name: "SO2", value: data.so2),
-                    (name: "CO", value: data.co)]
-        print("I'm here: \(dataArray.count)")
-        self.heightAnchor.constraint(equalToConstant: CGFloat(dataArray.count * 54)).isActive = true
-        tableView.reloadData()
-    }
-    
     fileprivate func setupView() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.widthAnchor.constraint(equalToConstant: 390).isActive = true
@@ -52,8 +39,59 @@ class InfoTableView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.layer.masksToBounds = true
     }
     
+    func updateTableViewData(_ data: DayData?) {
+        guard let data = data else { return }
+        dataArray = [(name: "PM2.5", value: data.pm25),
+                     (name: "PM10", value: data.pm10),
+                     (name: "O3", value: data.o3),
+                     (name: "NO2", value: data.no2),
+                     (name: "SO2", value: data.so2),
+                     (name: "CO", value: data.co)]
+        self.heightAnchor.constraint(equalToConstant: CGFloat(dataArray.count * 54)).isActive = true
+        tableView.reloadData()
+    }
+    
+    func checkForStatusString(_ value: Any?) -> String {
+        if let valueAsInt = value as? Int {
+            switch valueAsInt {
+            case 0...50:
+                return "(Good)"
+            case 51...100:
+                return "(Moderate)"
+            case 101...150:
+                return "(Unhealthy)"
+            case 151...200:
+                return "(Unhealthy)"
+            case 201...300:
+                return "(Very Unhealthy)"
+            case 300...:
+                return "(Hazardous)"
+            default:
+                return "(N/A)"
+            }
+        } else if let valueAsDouble = value as? Double {
+            switch valueAsDouble {
+            case 0...50:
+                return "(Good)"
+            case 51...100:
+                return "(Moderate)"
+            case 101...150:
+                return "(Unhealthy)"
+            case 151...200:
+                return "(Unhealthy)"
+            case 201...300:
+                return "(Very Unhealthy)"
+            case 300...:
+                return "(Hazardous)"
+            default:
+                return "(N/A)"
+            }
+        }
+        
+        return "(N/A)"
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("numberOfRowsInSection: \(dataArray.count)")
         return dataArray.count
     }
     
@@ -64,7 +102,7 @@ class InfoTableView: UIView, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! InfoTableViewCell
         cell.propertyNameLabel.text = dataArray[indexPath.row].name
-        cell.statusLabel.text = "(Moderate)"
+        cell.statusLabel.text = self.checkForStatusString(dataArray[indexPath.row].value)
         cell.valueLabel.text = "\(dataArray[indexPath.row].value ?? "-")"
         return cell
     }
