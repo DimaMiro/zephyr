@@ -56,9 +56,6 @@ class MainInfoCard: UIView {
         self.layer.cornerRadius = 20
         self.layer.masksToBounds = true
         
-        self.widthAnchor.constraint(equalToConstant: 390).isActive = true
-
-        
         addSubview(pm25Label)
         pm25Label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25).isActive = true
         pm25Label.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true

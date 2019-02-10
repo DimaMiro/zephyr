@@ -31,7 +31,7 @@ class InfoTableView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     fileprivate func setupView() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.widthAnchor.constraint(equalToConstant: 390).isActive = true
+//        self.widthAnchor.constraint(equalToConstant: 390).isActive = true
         self.backgroundColor = .white
         self.layer.borderColor = UIColor.CustomColor.outlineGray.cgColor
         self.layer.borderWidth = 1

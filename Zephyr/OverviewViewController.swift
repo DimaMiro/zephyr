@@ -11,15 +11,15 @@ import Alamofire
 import SwiftyJSON
 import CoreLocation
 
-class ViewController: UIViewController {
+class OverviewViewController: UIViewController {
     
-    fileprivate let token = SensitiveData.token
+    fileprivate let token = SensitiveData.aiqAPIToken
     fileprivate var city: String?
     fileprivate lazy var urlWithCity = "https://api.waqi.info/feed/\(city ?? "here")/?token=\(token)"
     
-    fileprivate var latitude: String?
-    fileprivate var longitude: String?
-    fileprivate lazy var urlWithGeoPosition = "https://api.waqi.info/feed/geo:\(latitude ?? "0.0");\(longitude ?? "0.0")/?token=\(token)"
+    var latitude: Double?
+    var longitude: Double?
+    fileprivate lazy var urlWithGeoPosition = "https://api.waqi.info/feed/geo:\(latitude ?? 0.0);\(longitude ?? 0.0)/?token=\(token)"
     
     fileprivate var dayData: DayData?
     
@@ -79,13 +79,15 @@ class ViewController: UIViewController {
         
         scrollView.addSubview(infoTableView)
         infoTableView.topAnchor.constraint(equalTo: card.bottomAnchor, constant: 16).isActive = true
-        infoTableView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
+        infoTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
+        infoTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
     }
     
     fileprivate func setupCardView() {
         scrollView.addSubview(card)
         card.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 16).isActive = true
-        card.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
+        card.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
+        card.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
         
         card.isHidden = true
     }
@@ -141,7 +143,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: CLLocationManagerDelegate {
+extension OverviewViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let currentLocation = locations.last else { print("Error detect location)"); return }
         if currentLocation.horizontalAccuracy > 0 {
@@ -150,10 +152,10 @@ extension ViewController: CLLocationManagerDelegate {
             
             print("longitude = \(currentLocation.coordinate.longitude), latitude = \(currentLocation.coordinate.latitude)")
             
-            let currentLatitude = String(currentLocation.coordinate.latitude)
-            let currentLongitude = String(currentLocation.coordinate.longitude)
-            self.latitude = currentLatitude
-            self.longitude = currentLongitude
+//            let currentLatitude = String(currentLocation.coordinate.latitude)
+//            let currentLongitude = String(currentLocation.coordinate.longitude)
+            self.latitude = currentLocation.coordinate.latitude
+            self.longitude = currentLocation.coordinate.longitude
             fetchData(withUrl: urlWithGeoPosition)
         }
     }

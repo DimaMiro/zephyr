@@ -11,10 +11,12 @@
 		D91BDACD220C746000C7E415 /* UIColor+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BDACC220C746000C7E415 /* UIColor+Extention.swift */; };
 		D91BDACF220CD13500C7E415 /* InfoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BDACE220CD13500C7E415 /* InfoTableView.swift */; };
 		D9217CA2220A3343000578AF /* MainInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9217CA1220A3343000578AF /* MainInfoCard.swift */; };
+		D9236AF0221080F8009DB0DF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9236AEF221080F8009DB0DF /* MapViewController.swift */; };
+		D9236AF22210828B009DB0DF /* CustomTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9236AF12210828B009DB0DF /* CustomTabbarViewController.swift */; };
 		D9275957220E2E7D009C8DB5 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9275956220E2E7D009C8DB5 /* InfoTableViewCell.swift */; };
 		D94743DE22079A33004F3DEA /* SensitiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94743DD22079A33004F3DEA /* SensitiveData.swift */; };
 		D99AADDE22073DC100A58B37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99AADDD22073DC100A58B37 /* AppDelegate.swift */; };
-		D99AADE022073DC100A58B37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99AADDF22073DC100A58B37 /* ViewController.swift */; };
+		D99AADE022073DC100A58B37 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99AADDF22073DC100A58B37 /* OverviewViewController.swift */; };
 		D99AADE522073DC200A58B37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D99AADE422073DC200A58B37 /* Assets.xcassets */; };
 		D99AADE822073DC200A58B37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D99AADE622073DC200A58B37 /* LaunchScreen.storyboard */; };
 		E39DACD3C52C734524717AD6 /* Pods_Zephyr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A218A0635F56C05A8446964 /* Pods_Zephyr.framework */; };
@@ -28,11 +30,13 @@
 		D91BDACC220C746000C7E415 /* UIColor+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extention.swift"; sourceTree = "<group>"; };
 		D91BDACE220CD13500C7E415 /* InfoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableView.swift; sourceTree = "<group>"; };
 		D9217CA1220A3343000578AF /* MainInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoCard.swift; sourceTree = "<group>"; };
+		D9236AEF221080F8009DB0DF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D9236AF12210828B009DB0DF /* CustomTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbarViewController.swift; sourceTree = "<group>"; };
 		D9275956220E2E7D009C8DB5 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		D94743DD22079A33004F3DEA /* SensitiveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitiveData.swift; sourceTree = "<group>"; };
 		D99AADDA22073DC100A58B37 /* Zephyr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zephyr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D99AADDD22073DC100A58B37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D99AADDF22073DC100A58B37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D99AADDF22073DC100A58B37 /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
 		D99AADE422073DC200A58B37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D99AADE722073DC200A58B37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D99AADE922073DC200A58B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +82,7 @@
 		D904F10F220C204700A75E9B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D99AADE422073DC200A58B37 /* Assets.xcassets */,
 				D99AADE922073DC200A58B37 /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -125,8 +130,9 @@
 			isa = PBXGroup;
 			children = (
 				D99AADDD22073DC100A58B37 /* AppDelegate.swift */,
-				D99AADDF22073DC100A58B37 /* ViewController.swift */,
-				D99AADE422073DC200A58B37 /* Assets.xcassets */,
+				D9236AF12210828B009DB0DF /* CustomTabbarViewController.swift */,
+				D99AADDF22073DC100A58B37 /* OverviewViewController.swift */,
+				D9236AEF221080F8009DB0DF /* MapViewController.swift */,
 				D904F111220C20E300A75E9B /* Helpers */,
 				D904F10E220C203A00A75E9B /* Model */,
 				D904F110220C20C600A75E9B /* Modules */,
@@ -147,6 +153,7 @@
 				D99AADD722073DC100A58B37 /* Frameworks */,
 				D99AADD822073DC100A58B37 /* Resources */,
 				E320C3D88E72B04EE439C4CD /* [CP] Embed Pods Frameworks */,
+				7C48D8BAF1C535EC2C35E939 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -203,6 +210,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7C48D8BAF1C535EC2C35E939 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Zephyr/Pods-Zephyr-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Zephyr/Pods-Zephyr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A332467760C784D4A9B5878D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,10 +275,12 @@
 			files = (
 				D91BDACD220C746000C7E415 /* UIColor+Extention.swift in Sources */,
 				D9275957220E2E7D009C8DB5 /* InfoTableViewCell.swift in Sources */,
+				D9236AF22210828B009DB0DF /* CustomTabbarViewController.swift in Sources */,
 				D9051A072208DFE200B1EEFC /* DayData.swift in Sources */,
 				D91BDACF220CD13500C7E415 /* InfoTableView.swift in Sources */,
+				D9236AF0221080F8009DB0DF /* MapViewController.swift in Sources */,
 				D94743DE22079A33004F3DEA /* SensitiveData.swift in Sources */,
-				D99AADE022073DC100A58B37 /* ViewController.swift in Sources */,
+				D99AADE022073DC100A58B37 /* OverviewViewController.swift in Sources */,
 				D99AADDE22073DC100A58B37 /* AppDelegate.swift in Sources */,
 				D9217CA2220A3343000578AF /* MainInfoCard.swift in Sources */,
 			);

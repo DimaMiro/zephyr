@@ -8,5 +8,5 @@ target 'Zephyr' do
   # Pods for Zephyr
     pod 'SwiftyJSON'
     pod 'Alamofire'
-
+    pod 'GoogleMaps'
 end
