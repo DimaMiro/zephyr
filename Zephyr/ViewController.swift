@@ -9,17 +9,24 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import CoreLocation
 
 class ViewController: UIViewController {
     
     fileprivate let token = SensitiveData.token
     fileprivate var city: String?
-    fileprivate lazy var url = "https://api.waqi.info/feed/\(city ?? "here")/?token=\(token)"
+    fileprivate lazy var urlWithCity = "https://api.waqi.info/feed/\(city ?? "here")/?token=\(token)"
+    
+    fileprivate var latitude: String?
+    fileprivate var longitude: String?
+    fileprivate lazy var urlWithGeoPosition = "https://api.waqi.info/feed/geo:\(latitude ?? "0.0");\(longitude ?? "0.0")/?token=\(token)"
     
     fileprivate var dayData: DayData?
     
     var card = MainInfoCard()
     var infoTableView = InfoTableView()
+    
+    var locationManager = CLLocationManager()
     
     lazy var indicator : UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
@@ -43,8 +50,18 @@ class ViewController: UIViewController {
         return refresher
     }()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+        setupLocationManager()
+        navigationItem.title = "Loading..."
+        
+        
+    }
+    
+    fileprivate func setupView() {
+        view.backgroundColor = UIColor.CustomColor.backgroundGray
         view.addSubview(scrollView)
         scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -57,11 +74,6 @@ class ViewController: UIViewController {
         indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         indicator.startAnimating()
-        
-        fetchData(withUrl: url)
-        view.backgroundColor = UIColor.CustomColor.backgroundGray
-        
-        navigationItem.title = "Loading..."
         
         setupCardView()
         
@@ -76,6 +88,13 @@ class ViewController: UIViewController {
         card.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
         
         card.isHidden = true
+    }
+    
+    fileprivate func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     fileprivate func fetchData(withUrl url: String) {
@@ -117,8 +136,31 @@ class ViewController: UIViewController {
     }
     
     @objc func refreshData() {
-        fetchData(withUrl: url)
+        fetchData(withUrl: urlWithGeoPosition)
         refreshControl.endRefreshing()
+    }
+}
+
+extension ViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let currentLocation = locations.last else { print("Error detect location)"); return }
+        if currentLocation.horizontalAccuracy > 0 {
+            locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil
+            
+            print("longitude = \(currentLocation.coordinate.longitude), latitude = \(currentLocation.coordinate.latitude)")
+            
+            let currentLatitude = String(currentLocation.coordinate.latitude)
+            let currentLongitude = String(currentLocation.coordinate.longitude)
+            self.latitude = currentLatitude
+            self.longitude = currentLongitude
+            fetchData(withUrl: urlWithGeoPosition)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        city = "here"
+        fetchData(withUrl: urlWithCity)
     }
 }
 
