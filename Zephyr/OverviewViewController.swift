@@ -15,11 +15,17 @@ class OverviewViewController: UIViewController {
     
     fileprivate let token = SensitiveData.aiqAPIToken
     fileprivate var city: String?
-    fileprivate lazy var urlWithCity = "https://api.waqi.info/feed/\(city ?? "here")/?token=\(token)"
+    
+    var urlWithCity: String {
+        return "https://api.waqi.info/feed/\(city ?? "here")/?token=\(token)"
+    }
     
     var latitude: Double?
     var longitude: Double?
-    fileprivate lazy var urlWithGeoPosition = "https://api.waqi.info/feed/geo:\(latitude ?? 0.0);\(longitude ?? 0.0)/?token=\(token)"
+    
+    var urlWithGeoPosition: String {
+        return "https://api.waqi.info/feed/geo:\(latitude ?? 0.0);\(longitude ?? 0.0)/?token=\(token)"
+    }
     
     fileprivate var dayData: DayData?
     
@@ -49,14 +55,23 @@ class OverviewViewController: UIViewController {
         refresher.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         return refresher
     }()
-
+    
+    lazy var searchController: UISearchController = {
+        let searchbar = UISearchController(searchResultsController: nil)
+        return searchbar
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupView()
         setupLocationManager()
         navigationItem.title = "Loading..."
-        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search by city"
         
     }
     
@@ -104,7 +119,19 @@ class OverviewViewController: UIViewController {
             if response.result.isSuccess {
                 let jsonData = JSON(response.result.value!)
                 if jsonData["status"] == "error" {
-                    print("Error")
+                    print(jsonData)
+                    if let wrongData = jsonData["data"].string {
+                        print("Error: \(String(describing: wrongData))")
+                        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                        self.presentAlert(withTitle: "Error", message: "\(String(describing: wrongData))", actions: [action], completion: nil)
+                    } else if let errorMessage = jsonData["message"].string {
+                        print("Error: \(String(describing: errorMessage))")
+                        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                        self.presentAlert(withTitle: "Error", message: "\(String(describing: errorMessage))", actions: [action], completion: nil)
+                    } else {
+                        print("Unknown error")
+                    }
+                    
                 } else {
                     self.dayData = self.parseJson(jsonData)
                     print(jsonData)
@@ -141,6 +168,14 @@ class OverviewViewController: UIViewController {
         fetchData(withUrl: urlWithGeoPosition)
         refreshControl.endRefreshing()
     }
+    
+    func presentAlert(withTitle title: String, message: String?, actions: [UIAlertAction], completion: (() -> Void)?){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        actions.forEach { (action) in
+            alert.addAction(action)
+        }
+        self.present(alert, animated: true, completion: completion)
+    }
 }
 
 extension OverviewViewController: CLLocationManagerDelegate {
@@ -151,9 +186,6 @@ extension OverviewViewController: CLLocationManagerDelegate {
             locationManager.delegate = nil
             
             print("longitude = \(currentLocation.coordinate.longitude), latitude = \(currentLocation.coordinate.latitude)")
-            
-//            let currentLatitude = String(currentLocation.coordinate.latitude)
-//            let currentLongitude = String(currentLocation.coordinate.longitude)
             self.latitude = currentLocation.coordinate.latitude
             self.longitude = currentLocation.coordinate.longitude
             fetchData(withUrl: urlWithGeoPosition)
@@ -163,6 +195,19 @@ extension OverviewViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         city = "here"
         fetchData(withUrl: urlWithCity)
+    }
+}
+
+extension OverviewViewController: UISearchBarDelegate {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print("TextDidEndEditing")
+        if let requestText = searchBar.text {
+            if requestText != "" {
+                city = requestText.lowercased()
+                fetchData(withUrl: urlWithCity)
+                searchController.dismiss(animated: true, completion: nil)
+            }
+        }
     }
 }
 

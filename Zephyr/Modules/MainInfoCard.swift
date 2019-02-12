@@ -52,7 +52,6 @@ class MainInfoCard: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = .red
         self.layer.cornerRadius = 20
         self.layer.masksToBounds = true
         
@@ -83,7 +82,12 @@ class MainInfoCard: UIView {
         if let pm25Value = data?.pm25 {
             pm25Label.text = String(pm25Value)
             checkForCardColor(pm25value: pm25Value)
-        } else { print("pm25Value is nil") }
+        } else {
+            print("pm25Value is nil")
+            pm25Label.text = "-"
+            backgroundColor = .gray
+            statusLabel.text = "N/A"
+        }
         if let udatedTimeValue = data?.time {
             updatedTimeLabel.text = "Updated on \(self.formatDate(udatedTimeValue))"
         } else { print("udatedTimeValue is nil") }
@@ -117,11 +121,7 @@ class MainInfoCard: UIView {
                 self.backgroundColor = .gray
                 self.statusLabel.text = "N/A"
             }
-        } else {
-            self.backgroundColor = .gray
-            self.statusLabel.text = "N/A"
         }
-        
     }
     
     func formatDate(_ date: String) -> String {

@@ -30,7 +30,7 @@ class MapViewController: UIViewController {
             }
             let layer = GMSURLTileLayer(urlConstructor: urls)
             
-            layer.zIndex = 100
+            layer.zIndex = 1000
             layer.map = mapView
         }
         

@@ -17,9 +17,11 @@ class CustomTabbarViewController: UITabBarController {
         let firstVC = OverviewViewController()
         let firstNavigationController = UINavigationController(rootViewController: firstVC)
         firstNavigationController.tabBarItem.title = "Overview"
+        firstNavigationController.tabBarItem.image = UIImage(named: "overview-ico")
         
         let secondVC = MapViewController()
         secondVC.tabBarItem.title = "Map"
+        secondVC.tabBarItem.image = UIImage(named: "map-ico")
         secondVC.overviewVCInstance = firstVC
         
         viewControllers = [firstNavigationController, secondVC]
