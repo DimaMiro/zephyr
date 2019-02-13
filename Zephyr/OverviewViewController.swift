@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import CoreLocation
 
-class OverviewViewController: UIViewController {
+class OverviewViewController: UIViewController, UITabBarControllerDelegate {
     
     fileprivate let token = SensitiveData.aiqAPIToken
     fileprivate var city: String?
@@ -61,14 +61,16 @@ class OverviewViewController: UIViewController {
         return searchbar
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tabBarController?.delegate = self
         setupView()
         setupLocationManager()
         navigationItem.title = "Loading..."
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        self.definesPresentationContext = true
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search by city"
@@ -184,6 +186,10 @@ class OverviewViewController: UIViewController {
         }
         self.present(alert, animated: true, completion: completion)
     }
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        searchController.isActive = false
+    }
+
 }
 
 extension OverviewViewController: CLLocationManagerDelegate {
@@ -207,15 +213,17 @@ extension OverviewViewController: CLLocationManagerDelegate {
 }
 
 extension OverviewViewController: UISearchBarDelegate {
+
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         print("TextDidEndEditing")
         if let requestText = searchBar.text {
             if requestText != "" {
                 city = requestText.lowercased()
                 fetchData(withUrl: urlWithCity)
-                searchController.dismiss(animated: true, completion: nil)
             }
         }
     }
+    
+    
 }
 

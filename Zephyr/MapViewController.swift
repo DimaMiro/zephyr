@@ -30,6 +30,15 @@ class MapViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+//        guard let latitude = overviewVCInstance.latitude, let longitude = overviewVCInstance.longitude else { return }
+//
+//        if case latitude = self.latitude, case longitude = self.longitude {
+//            print("1 CASE")
+//           return
+//        } else {
+//            setupMapView(latitude, longitude)
+//        }
+        
         latitude = overviewVCInstance.latitude
         longitude = overviewVCInstance.longitude
         if let latitude = self.latitude, let longitude = self.longitude {

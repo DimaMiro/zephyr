@@ -11,7 +11,6 @@ import UIKit
 class CustomTabbarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.tintColor = UIColor.CustomColor.green
         
         let firstVC = OverviewViewController()
