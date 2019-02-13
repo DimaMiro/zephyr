@@ -15,27 +15,42 @@ class MapViewController: UIViewController {
     fileprivate let gmAPIKey = SensitiveData.googleMapsAPIKey
     
     var overviewVCInstance = OverviewViewController()
+    
+    var latitude: Double?
+    var longitude: Double?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         GMSServices.provideAPIKey(gmAPIKey)
-        if let latitude = overviewVCInstance.latitude, let longitude = overviewVCInstance.longitude {
-            
-            let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 12)
-            let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-            view = mapView
-            
-            let urls: GMSTileURLConstructor = {(latitude, longitude, zoom) in
-                let url = "https://tiles.waqi.info/tiles/usepa-pm25/\(zoom)/\(latitude)/\(longitude).png?token=\(self.aqiToken)"
-                return URL(string: url)
-            }
-            let layer = GMSURLTileLayer(urlConstructor: urls)
-            
-            layer.zIndex = 1000
-            layer.map = mapView
+        latitude = overviewVCInstance.latitude
+        longitude = overviewVCInstance.longitude
+        if let latitude = self.latitude, let longitude = self.longitude {
+            setupMapView(latitude, longitude)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        latitude = overviewVCInstance.latitude
+        longitude = overviewVCInstance.longitude
+        if let latitude = self.latitude, let longitude = self.longitude {
+            setupMapView(latitude, longitude)
+        }
+    }
+    
+    fileprivate func setupMapView(_ latitude: Double, _ longitude: Double) {
         
+        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 13)
+        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        view = mapView
         
+        let urls: GMSTileURLConstructor = {(latitude, longitude, zoom) in
+            let url = "https://tiles.waqi.info/tiles/usepa-pm25/\(zoom)/\(latitude)/\(longitude).png?token=\(self.aqiToken)"
+            return URL(string: url)
+        }
+        let layer = GMSURLTileLayer(urlConstructor: urls)
         
+        layer.zIndex = 1000
+        layer.map = mapView
     }
 
 }

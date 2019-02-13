@@ -139,8 +139,12 @@ class OverviewViewController: UIViewController {
                         self.indicator.stopAnimating()
                         self.card.updateCardData(self.dayData)
                         self.infoTableView.updateTableViewData(self.dayData)
-                        if let firstWordInLocation = self.dayData!.city!.components(separatedBy: ",").first {
+                        if let firstWordInLocation = self.dayData?.city?.components(separatedBy: ",").first {
                             self.navigationItem.title = firstWordInLocation
+                        }
+                        if let latitude = self.dayData?.latitude, let longitude = self.dayData?.longitude {
+                            self.latitude = latitude
+                            self.longitude = longitude
                         }
                     }
                 }
@@ -152,6 +156,10 @@ class OverviewViewController: UIViewController {
     
     fileprivate func parseJson(_ json: JSON) -> DayData? {
         var parsedData = DayData()
+        
+        parsedData.latitude = json["data"]["city"]["geo"][0].double
+        parsedData.longitude = json["data"]["city"]["geo"][1].double
+        
         parsedData.city = json["data"]["city"]["name"].string
         parsedData.time = json["data"]["time"]["s"].string
         parsedData.pm25 = json["data"]["iaqi"]["pm25"]["v"].int

@@ -10,6 +10,9 @@ import Foundation
 
 struct DayData {
     
+    var latitude: Double?
+    var longitude: Double?
+    
     var city: String?
     var time: String?
     var pm25: Int?
