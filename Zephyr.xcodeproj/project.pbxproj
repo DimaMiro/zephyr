@@ -82,7 +82,6 @@
 		D904F10F220C204700A75E9B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D94743DD22079A33004F3DEA /* SensitiveData.swift */,
 				D99AADE422073DC200A58B37 /* Assets.xcassets */,
 				D99AADE922073DC200A58B37 /* Info.plist */,
 			);
@@ -133,6 +132,7 @@
 				D9236AF12210828B009DB0DF /* CustomTabbarViewController.swift */,
 				D99AADDF22073DC100A58B37 /* OverviewViewController.swift */,
 				D9236AEF221080F8009DB0DF /* MapViewController.swift */,
+				D94743DD22079A33004F3DEA /* SensitiveData.swift */,
 				D904F111220C20E300A75E9B /* Helpers */,
 				D904F10E220C203A00A75E9B /* Model */,
 				D904F110220C20C600A75E9B /* Modules */,
