@@ -3,6 +3,7 @@ App shows quality of air in your geo position.
 ## Screenshots
 ![zephyr-screens](https://user-images.githubusercontent.com/15017363/52905578-6bd41b00-323c-11e9-9545-7629e3d5afca.png)
 ## Features
+* Use Air Quality Open Data Platform [API](https://aqicn.org/api/)
 * Detect your position
 * Search by city
 * Google Map Kit
