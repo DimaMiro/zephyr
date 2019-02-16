@@ -49,11 +49,24 @@ class MainInfoCard: UIView {
         return label
     }()
     
+    var treeImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "tree")
+        imageView.alpha = 0.2
+        return imageView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 20
         self.layer.masksToBounds = true
+        
+        addSubview(treeImage)
+        treeImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
+        treeImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
+        treeImage.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
         addSubview(pm25Label)
         pm25Label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25).isActive = true

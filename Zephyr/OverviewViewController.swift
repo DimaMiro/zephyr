@@ -31,6 +31,13 @@ class OverviewViewController: UIViewController, UITabBarControllerDelegate {
     
     var card = MainInfoCard()
     var infoTableView = InfoTableView()
+    var logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "aqi-logo")
+        imageView.alpha = 0.2
+        return imageView
+    }()
     
     var locationManager = CLLocationManager()
     
@@ -98,6 +105,10 @@ class OverviewViewController: UIViewController, UITabBarControllerDelegate {
         infoTableView.topAnchor.constraint(equalTo: card.bottomAnchor, constant: 16).isActive = true
         infoTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
         infoTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
+        
+        scrollView.addSubview(logoImageView)
+        logoImageView.topAnchor.constraint(equalTo: infoTableView.bottomAnchor, constant: 16).isActive = true
+        logoImageView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
     }
     
     fileprivate func setupCardView() {
@@ -220,6 +231,7 @@ extension OverviewViewController: UISearchBarDelegate {
             if requestText != "" {
                 city = requestText.lowercased()
                 fetchData(withUrl: urlWithCity)
+                searchController.isActive = false
             }
         }
     }
